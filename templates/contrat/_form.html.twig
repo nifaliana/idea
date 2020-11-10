@@ -1,0 +1,54 @@
+{{ form_start(form, {'attr': {'class': 'form'}}) }}
+
+{% if form.imageFile %}
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label">{{ form_label(form.imageFile) }}</label>
+        <div class="col-lg-6">
+            {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+            <span class="form-text text-danger">{{ form_errors(form.imageFile) }}</span>
+        </div>
+    </div>
+{% endif %}
+
+
+<div class="form-group row">
+    <label class="col-lg-3 col-form-label">{{ form_label(form.amount) }}</label>
+    <div class="col-lg-6">
+        {{ form_widget(form.amount, {'attr': {'class': 'form-control'}}) }}
+        <span class="form-text text-danger">{{ form_errors(form.amount) }}</span>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-lg-3 col-form-label">{{ form_label(form.signedAt) }}</label>
+    <div class="col-lg-6">
+        {{ form_widget(form.signedAt, {'attr': {'class': 'form-control', 'id': 'kt_datepicker_4_3'}}) }}
+        <span class="form-text text-danger">{{ form_errors(form.signedAt) }}</span>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-lg-3 col-form-label">{{ form_label(form.endedAt) }}</label>
+    <div class="col-lg-6">
+        {{ form_widget(form.endedAt, {'attr': {'class': 'form-control', 'id': 'kt_datepicker_3'}}) }}
+        <span class="form-text text-danger">{{ form_errors(form.endedAt) }}</span>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-lg-3 col-form-label">{{ form_label(form.client) }}</label>
+    <div class="col-lg-6">
+        {{ form_widget(form.client, {'attr': {'class': 'form-control'}}) }}
+        <span class="form-text text-danger">{{ form_errors(form.client) }}</span>
+    </div>
+</div>
+
+<div class="separator separator-dashed my-5"></div>
+{{ form_widget(form.payement) }}
+
+<div class="separator separator-dashed my-10"></div>
+
+<input type="submit" class="btn btn-success mr-2" value="Enregistrer">
+
+{{ form_end(form) }}
+

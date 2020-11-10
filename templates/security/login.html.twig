@@ -1,0 +1,67 @@
+{% extends 'auth_base.html.twig' %}
+
+{% block title %}Authentification{% endblock %}
+
+{% block body %}
+
+    <!--begin::Login-->
+    <div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
+        <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-color: white;">
+            <div class="login-form text-center p-7 position-relative overflow-hidden">
+                <!--begin::Login Header-->
+                <div class="d-flex flex-center mb-15">
+                    <a href="#">
+                        <img src="{{ asset('assets/media/logos/auth.png') }}" class="max-h-75px" alt="" />
+                    </a>
+                </div>
+                <!--end::Login Header-->
+                <!--begin::Login Sign in form-->
+                <div class="login-signin">
+                    <div class="mb-20">
+                        <h3>Authentification</h3>
+                    </div>
+                    <form class="form" method="post" id="kt_login_signin_form">
+
+                        {% if error %}
+                            <div class="alert alert-custom alert-danger fade show" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                                <div class="alert-text">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                <div class="alert-close">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                        {% if app.user %}
+                            <div class="mb-3">
+                                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                            </div>
+                        {% endif %}
+
+                        <div class="form-group mb-5">
+                            <input value="{{ last_username }}" class="form-control h-auto rounded-pill form-control-solid py-4 px-8" type="email" placeholder="Email" name="email" autocomplete="off" />
+                        </div>
+                        <div class="form-group mb-5">
+                            <input class="form-control h-auto rounded-pill form-control-solid py-4 px-8" type="password" placeholder="Mot de passe" name="password" />
+                        </div>
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        <div class="form-group d-flex flex-wrap justify-content-center align-items-center">
+                            <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary">Mot de passe oublié ?</a>
+                        </div>
+                        <button type="submit" id="kt_login_signin_submit" class="btn btn-primary btn-pill font-weight-bold px-9 py-4 my-3 mx-4">Se connecter</button>
+                    </form>
+                    <div class="mt-10">
+                        <span class="opacity-70 mr-4">J'ai pas de compte ?</span>
+                        <a href="{{ path('app_register') }}" id="kt_login_signup" class="text-muted text-hover-primary font-weight-bold">S'inscrire</a>
+                    </div>
+                </div>
+                <!--end::Login Sign in form-->
+            </div>
+        </div>
+    </div>
+    <!--end::Login-->
+
+{% endblock %}

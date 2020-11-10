@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PanneauOffre{% endblock %}
+
+{% block body %}
+    <h1>Create new PanneauOffre</h1>
+
+    {{ include('panneau_offre/_form.html.twig') }}
+
+    <a href="{{ path('panneau_offre_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Confection{% endblock %}
+
+{% block body %}
+    <h1>Create new Confection</h1>
+
+    {{ include('confection/_form.html.twig') }}
+
+    <a href="{{ path('confection_index') }}">back to list</a>
+{% endblock %}

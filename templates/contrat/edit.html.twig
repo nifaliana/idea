@@ -1,0 +1,138 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition Contrat{% endblock %}
+
+{% form_theme form _self %}
+
+{% block body %}
+
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Editer contrat</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Contrat</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            Editer contrat # {{ contrat.id }}</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <div class="right">
+                <a href="{{ path('contrat_index') }}" class="btn btn-light-primary font-weight-bolder mr-2">
+                    <i class="ki ki-long-arrow-back icon-sm"></i>
+                    Retour
+                </a>
+                <a href="{{ path('contrat_delete', {'id': contrat.id}) }}" class="btn btn-danger font-weight-bolder mr-2">
+                    <i class="la la-trash"></i>
+                    Supprimer
+                </a>
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+
+
+    <div class="container">
+        <div class="card card-custom gutter-b example example-compact">
+            <!--begin::Form-->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-lg-8">
+                        <h3 class="text-dark font-weight-bold mb-10">Veuillez modifier les champs</h3>
+                        {{ include('contrat/_form.html.twig') }}
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+            </div>
+            <!--end::Form-->
+        </div>
+    </div>
+
+
+
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js') }}"></script>
+
+        <script>
+
+            $("#add-payement").click(function () {
+                const elt = "#contrat_payement";
+                const index = +$("#widgets-counter").val();
+                const prototype = $(elt).data('prototype').replace(/__name__/g, index);
+                $(elt).append(prototype);
+                $("#widgets-counter").val(index + 1);
+                unsetCollection();
+            })
+            function unsetCollection(){
+                $('button[data-action="delete"]').click(function () {
+                    const target = this.dataset.target;
+                    $(target).remove();
+                })
+            }
+            unsetCollection();
+
+        </script>
+
+    {% endblock %}
+
+{% endblock %}
+
+{% block _contrat_payement_widget %}
+    {{ form_widget(form) }}
+    <input type="hidden" id="widgets-counter">
+    <button type="button" class="btn btn-light-primary font-weight-bolder mr-2" id="add-payement">
+        <i class="la la-plus-circle"></i>Ajouter payement</button>
+{% endblock %}
+
+{% block _contrat_payement_entry_widget %}
+    <div class="form-group d-flex align-items-end row" id="block_{{ id }}">
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-4">
+                    <label>{{ form_label(form.reference) }}</label>
+                    {{ form_widget(form.reference, {'attr': {'class': 'form-control', 'placeholder': 'Référence'}}) }}
+                    <span class="form-text text-danger">{{ form_errors(form.reference) }}</span>
+                </div>
+                <div class="col-lg-4">
+                    <label>{{ form_label(form.somme) }}</label>
+                    {{ form_widget(form.somme, {'attr': {'class': 'form-control', 'placeholder': 'Somme à payer'}}) }}
+                    <span class="form-text text-danger">{{ form_errors(form.somme) }}</span>
+                </div>
+                <div class="col-lg-4">
+                    <label>{{ form_label(form.modePayement) }}</label>
+                    {{ form_widget(form.modePayement, {'attr': {'class': 'form-control', 'placeholder': 'Mode de payement'}}) }}
+                    <span class="form-text text-danger">{{ form_errors(form.modePayement) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" data-action="delete" data-target="#block_{{ id }}" class="btn btn-light-danger font-weight-bolder mr-2" id="add-payement">
+                <i class="la la-trash"></i></button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block _contrat_payement_entry_row %}
+    {{ form_widget(form) }}
+{% endblock %}
+{% block _contrat_payement_label %}
+
+{% endblock %}
+

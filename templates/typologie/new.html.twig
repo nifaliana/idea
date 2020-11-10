@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Typologie{% endblock %}
+
+{% block body %}
+    <h1>Create new Typologie</h1>
+
+    {{ include('typologie/_form.html.twig') }}
+
+    <a href="{{ path('typologie_index') }}">back to list</a>
+{% endblock %}

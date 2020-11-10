@@ -1,0 +1,82 @@
+{% extends 'auth_base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+    <!--begin::Login-->
+    <div class="login login-4 login-signup-on d-flex flex-row-fluid" id="kt_login">
+        <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-color: white;">
+            <div class="login-form text-center p-7 position-relative overflow-hidden">
+                <!--begin::Login Header-->
+                <div class="d-flex flex-center mb-15">
+                    <a href="#">
+                        <img src="{{ asset('assets/media/logos/auth.png') }}" class="max-h-75px" alt="" />
+                    </a>
+                </div>
+                <!--end::Login Header-->
+                <!--begin::Login Sign in form-->
+                <div class="">
+                    <div class="mb-20">
+                        <h3>Inscription</h3>
+                    </div>
+
+                    {{ form_start(registrationForm, {'attr': {'class': 'form'}}) }}
+
+                        {% for flashError in app.flashes('verify_email_error') %}
+                            <div class="alert alert-custom alert-danger fade show" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                                <div class="alert-text">{{ flashError }}</div>
+                                <div class="alert-close">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                    </button>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <div class="form-group mb-5">
+                            {{ form_widget(registrationForm.email,
+                                {'attr': {'class': 'form-control h-auto rounded-pill form-control-solid py-4 px-8', 'placeholder': 'Email'}}
+                            ) }}
+                            <span class="form-text text-danger">{{ form_errors(registrationForm.email) }}</span>
+                        </div>
+                        <div class="form-group mb-5">
+                            {{ form_widget(registrationForm.password, {'attr': {'class': 'form-control h-auto rounded-pill form-control-solid py-4 px-8', 'placeholder': 'Mot de passe'}}) }}
+                            <span class="form-text text-danger">{{ form_errors(registrationForm.password) }}</span>
+                        </div>
+                        <div class="form-group mb-5">
+                            {{ form_widget(registrationForm.confirmPassword, {'attr': {'class': 'form-control h-auto rounded-pill form-control-solid py-4 px-8', 'placeholder': 'Confirmation mot de passe'}}) }}
+                            <span class="form-text text-danger">{{ form_errors(registrationForm.confirmPassword) }}</span>
+                        </div>
+                        <div class="form-group d-flex flex-wrap justify-content-center align-items-center">
+                            <label class="checkbox m-0 text-muted">
+                                {{ form_widget(registrationForm.agreeTerms) }} J'accepte les termes et conditions
+                                <span></span>
+                            </label>
+                        </div>
+                        <button type="submit" id="kt_login_signup_submit" class="btn btn-primary btn-pill font-weight-bold px-9 py-4 my-3 mx-4">S'inscrire</button>
+                    {{ form_end(registrationForm) }}
+                    <div class="mt-10">
+                        <span class="opacity-70 mr-4">J'ai déjà un compte ?</span>
+                        <a href="{{ path('app_login') }}" id="kt_login_signup" class="text-muted text-hover-primary font-weight-bold">Se connecter</a>
+                    </div>
+                </div>
+                <!--end::Login Sign in form-->
+            </div>
+        </div>
+    </div>
+    <!--end::Login-->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

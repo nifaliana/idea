@@ -1,0 +1,45 @@
+<!--begin::Header Menu-->
+<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+    {% set current_path = app.request.get('_route') %}
+    <!--begin::Header Nav-->
+    <ul class="menu-nav">
+
+        <li class="menu-item menu-item-rel {{ current_path == 'dashboard' ? ' menu-item-active' : '' }}">
+            <a href="{{ path('dashboard') }}" class="menu-link">
+                <span class="menu-text">Tableau de bord</span>
+            </a>
+        </li>
+
+        <li class="menu-item menu-item-rel {{ current_path == 'contrat_index' ? ' menu-item-active' : '' }}">
+            <a href="{{ path('contrat_index') }}" class="menu-link">
+                <span class="menu-text">Contrat</span>
+            </a>
+        </li>
+
+        <li class="menu-item menu-item-rel {{ current_path == 'panneau_index' ? ' menu-item-active' : '' }}">
+            <a href="{{ path('panneau_index') }}" class="menu-link">
+                <span class="menu-text">Panneau</span>
+            </a>
+        </li>
+
+        <li class="menu-item menu-item-rel {{ current_path == 'confection_index' ? ' menu-item-active' : '' }}">
+            <a href="{{ path('confection_index') }}" class="menu-link">
+                <span class="menu-text">Confection</span>
+            </a>
+        </li>
+
+        <li class="menu-item menu-item-rel {{ current_path == 'typologie_index' ? ' menu-item-active' : '' }}">
+            <a href="{{ path('typologie_index') }}" class="menu-link">
+                <span class="menu-text">Typologie</span>
+            </a>
+        </li>
+
+        <li class="menu-item menu-item-rel {{ current_path == 'user_index' ? ' menu-item-active' : '' }}">
+            <a href="{{ path('user_index') }}" class="menu-link">
+                <span class="menu-text">Clients</span>
+            </a>
+        </li>
+    </ul>
+    <!--end::Header Nav-->
+</div>
+<!--end::Header Menu-->

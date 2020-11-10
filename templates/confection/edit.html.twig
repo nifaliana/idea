@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Confection{% endblock %}
+
+{% block body %}
+    <h1>Edit Confection</h1>
+
+    {{ include('confection/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('confection_index') }}">back to list</a>
+
+    {{ include('confection/_delete_form.html.twig') }}
+{% endblock %}

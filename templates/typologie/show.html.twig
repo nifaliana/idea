@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Typologie{% endblock %}
+
+{% block body %}
+    <h1>Typologie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ typologie.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ typologie.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('typologie_index') }}">back to list</a>
+
+    <a href="{{ path('typologie_edit', {'id': typologie.id}) }}">edit</a>
+
+    {{ include('typologie/_delete_form.html.twig') }}
+{% endblock %}
